@@ -20,7 +20,7 @@ void libera(Matriz *mat){
 Matriz *cria(int m, int n){
 	Matriz *mat = (Matriz*) malloc(sizeof(Matriz));
 	
-	if(mat = NULL){
+	if(mat == NULL){
 		printf("Memória insuficiente.\n");
 		exit(1);
 	}

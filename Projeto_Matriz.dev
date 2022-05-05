@@ -50,6 +50,16 @@ ProductVersion=
 AutoIncBuildNr=0
 SyncProduct=1
 
+[Unit3]
+FileName=matriz.h
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
 [Unit1]
 FileName=main.c
 CompileCpp=0
@@ -61,17 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=matriz.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=matriz.h
+FileName=TAD\matriz.c
 CompileCpp=0
 Folder=
 Compile=1
