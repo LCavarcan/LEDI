@@ -1,0 +1,31 @@
+TADs: Tipos abstratos de dados
+
+Tipo de dado != tipo estruturado de dado != tipo abstrato de dado
+
+Tipo de dado 
+- conjunto de valores que ela pode assumir
+
+Tipo estruturado de dado 
+- Estrutura de dados já pré-estabelecidas (vetores, matrizes, structs...)
+
+Tipo abstrato de dados
+- Usado pra acessar informações por operações apropriadas 
+- Exemplos: fila
+- Representação matemática de um TAD = (V, O)
+- V= Reais / O = +, -, *, <...
+- Para definir um TAD são necessários dois módulos - Um que define o TAD, e o outro que contém a interface de acesso
+- Os módulos são instalados em uma biblioteca
+- O programador tem acesso a uma descrição dos valores e operações admitidas pelo TAD
+
+Vantagens do uso de TADs
+- Reuso
+- Manutenção
+
+Em linguagens OO a implementação é feita por meio de classes
+
+Em linguagens estruturadas a implementação é feita pela definição de tipos e a implementação de funções 
+
+O certo é implementar os TADs em arquivos separados 
+- nomedoTAD.h = Arquivo de Declaração 
+- nomedoTAD.c = Arquivo de Implementação
+
