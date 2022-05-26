@@ -7,7 +7,7 @@
 #define FALSE 0
 #define boolean int
 
-//Implementação: lista sequencial
+//Implementaï¿½ï¿½o: lista sequencial
 
 //Estruturas e tipos
 //------------------------------
@@ -28,24 +28,24 @@ typedef struct {
 
 //Tipo lista (sequencial)
 typedef struct {
-	int nelem; //Número de elementos 
+	int nelem; //Nï¿½mero de elementos 
 	tipo_elem A[MAX+1];
 }lista;
 
-//Operações
+//Operaï¿½ï¿½es
 //-----------------------------
 boolean Vazia(lista *L) {
-	//Retorna true(1): se vazia, e false(0), caso contrário
+	//Retorna true(1): se vazia, e false(0), caso contrï¿½rio
 	return(L->nelem == 0);
 }
 
 boolean Cheia(lista *L) {
-	//Retorna true, se cheia, false, caso contrário
+	//Retorna true, se cheia, false, caso contrï¿½rio
 	return(L->nelem == MAX);
 }
 
 void Definir(lista *L) {
-	//Cria uma lista vazia. Este procedimento deve ser chamado para cada nova lista antes de qualquer outra operação
+	//Cria uma lista vazia. Este procedimento deve ser chamado para cada nova lista antes de qualquer outra operaï¿½ï¿½o
 	L->nelem = 0;
 	L->A[0].chave = 0;
 }
@@ -56,12 +56,12 @@ void Apagar(lista *L) {
 }
 
 boolean Inserir_posic(tipo_elem x, int p, lista *L) {
-	//Insere x, que é um novo elemento na posição p da Lista. Se L = a_1, a_2, ..., a_n, então temos a_1, a_2, ..., a_{p-1}, x, a_{p+1}, ..., a_n. Devolve true se sucesso e false caso contrário (isto é: L não tem nenhuma posição p ou Litsa cheia)
-	//Obs: Operação para lista não-oredenada
+	//Insere x, que ï¿½ um novo elemento na posiï¿½ï¿½o p da Lista. Se L = a_1, a_2, ..., a_n, entï¿½o temos a_1, a_2, ..., a_{p-1}, x, a_{p+1}, ..., a_n. Devolve true se sucesso e false caso contrï¿½rio (isto ï¿½: L nï¿½o tem nenhuma posiï¿½ï¿½o p ou Litsa cheia)
+	//Obs: Operaï¿½ï¿½o para lista nï¿½o-oredenada
 	int q;
 	
 	if(Cheia(L) || p > L->nelem+1 || p < 1) {
-		//Lista cheia ou posição inexistente
+		//Lista cheia ou posiï¿½ï¿½o inexistente
 		return FALSE;
 	}
 	else {
@@ -73,13 +73,13 @@ boolean Inserir_posic(tipo_elem x, int p, lista *L) {
 		L->A[p] = x;
 		L->nelem++;
 		
-		return TRUE; //Inserção realizada com sucesso
+		return TRUE; //Inserï¿½ï¿½o realizada com sucesso
 	}
 }
 
 boolean Buscar(tipo_chave x, lista *L, int *p) {
-	//Retorna true, se x ocorre na posição p. Se x ocorre mais de uma vez, retorna a posição da primeira ocorrência. Se x não ocorre, retorna false
-	//OBS: Lista não-ordenada
+	//Retorna true, se x ocorre na posiï¿½ï¿½o p. Se x ocorre mais de uma vez, retorna a posiï¿½ï¿½o da primeira ocorrï¿½ncia. Se x nï¿½o ocorre, retorna false
+	//OBS: Lista nï¿½o-ordenada
 	if(!Vazia(L)) {
 		int i = 1;
 		while(i <= L->nelem) {
@@ -92,12 +92,12 @@ boolean Buscar(tipo_chave x, lista *L, int *p) {
 			}
 		}
 		
-		return FALSE; // Retorna falso, se não encontrou
+		return FALSE; // Retorna falso, se nï¿½o encontrou
 	}
 }
 
 void Remover_posic(int *p, lista *L) {
-	//Só é ativada após a busca ter retornado a posição p do elemento a ser removido
+	//Sï¿½ ï¿½ ativada apï¿½s a busca ter retornado a posiï¿½ï¿½o p do elemento a ser removido
 	int i;
 	
 	for(i = *p+1; i < L->nelem; i++) {
@@ -124,17 +124,17 @@ void Imprimir(lista *L) {
 }
 
 int Tamanho(Lista *L) {
-	//Retorna o tamanho da lista. Se L é vazia, retorna 0
+	//Retorna o tamanho da lista. Se L ï¿½ vazia, retorna 0
 	return L->nelem;
 }
 
 boolean Inserir_ord(tipo_elem x, lista *L) {
-	//Insere no elemento de forma a manter a lista ordenada (crescente). Devolve true se sucesso, e false caso contrário
+	//Insere no elemento de forma a manter a lista ordenada (crescente). Devolve true se sucesso, e false caso contrï¿½rio
 	if(Vazia(L)) {
 		return Inserir_posic(x, i, L);
 	}
 	else {
-		while(i<=L->nelem) { //Encontra a posicao de inserção
+		while(i<=L->nelem) { //Encontra a posicao de inserï¿½ï¿½o
 			if(x.chave < L->A[i].chave) {
 				return Inserir_posic(x, i, L);
 			}
@@ -145,6 +145,69 @@ boolean Inserir_ord(tipo_elem x, lista *L) {
 		
 		return Inserir_posic(x, i, L); //i=nelem
 	}
+}
+
+boolean Buscar_ord(tipo_chave x, lista *L, int *p) {
+	//Retorna true se x ocorre na posiÃ§Ã£o p. Se x ocorre mais de uma vez , retorna a posiÃ§Ã£o da primeira ocorrÃªncia. Se x nÃ£o ocorre, retorna false.
+	//OBS: Para listas ORDENADAS
+	if(!Vazia(L)) {
+		int i=1;
+
+		while(i <= L->nelem) {
+			if(L->A[i].chave >= x) {
+				if(L->A[i].chave == x) {
+					*p = i;
+					return TRUE;
+				}
+				else {
+					return FALSE;  //Encontrou maior, entÃ£o nÃ£o tem o valor 
+				}
+			}
+			else {
+				i++;
+			}
+		}
+	}
+}
+
+boolean Busca_bin(tipo_chave x, lista *L, int *p) {
+	//Retorna em p, a posiÃ§Ã£o de x na lista ORDENADA e true. Se x nÃ£o ocorre, retorna false
+	//ImplementeÃ§Ã£o da busca binÃ¡ria
+	int inf = 1;
+	int sup = L->nelem;
+	int meio;
+
+	while(sup >= inf) {
+		meio = (inf + sup)/2;
+
+		if(L->A[meio].chave == x) {
+			*p = meio;
+			return TRUE; //Sai da busca
+		}
+		else {
+			if(L->A[meio].chave < x) {
+				inf = meio + 1;
+			}
+			else {
+				sup = meio - 1;
+			}
+		}
+	}
+	return FALSE;
+}
+
+boolean Remover_ch() {
+	//RemÃ§Ã£o dada a chave. Retorna true, se removeu, ou false,caso contrÃ¡rio
+
+	int *p;
+	boolean removeu = FALSE;
+
+	if(Busca_bin(x, L, p)) { //Procura via busca binÃ¡ria
+		Remover_posic(p, L);
+		removeu = TRUE;
+	}
+
+	return removeu;
 }
 
 int main() {
